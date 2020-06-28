@@ -1,12 +1,12 @@
-const User = require("../model/User");
+const controllerUser = require("../Controller/ControllerUser");
 
 module.exports = {
     Query: {
-        users: () => User.find(),
-        user: (_, { id }) => User.findById(id),
+        getAllUsers: controllerUser.users,
+        getOneUser: (_, { id }) => controllerUser.user(id),
     },
 
     Mutation: {
-        createUser: (_, { name, email }) => User.create({name, email}), 
+        createUser: (_, { name, email }) => controllerUser.create(name,email), 
     },
-}
+};
